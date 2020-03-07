@@ -1,0 +1,3 @@
+rootProject.name = 'planter-jr'
+
+include 'main'

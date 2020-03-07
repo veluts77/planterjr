@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.jruby-gradle:jruby-gradle-jar-plugin:1.6.0'
+    }
+}
+
+apply plugin: "com.github.jruby-gradle.jar"
+
+dependencies {
+    jrubyJar "rubygems:colorize:0.7.7+"
+}
+
+jrubyJar {
+    initScript "${projectDir}/src/main/ruby/main.rb"
+
+    from('src/main/ruby') {
+        include 'core/**/*.rb'
+    }
+
+    from('../java-obj/build/libs') {
+        include 'java-obj.jar'
+    }
+}
