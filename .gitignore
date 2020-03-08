@@ -31,5 +31,4 @@ build/
 **/.classpath
 **/.jrubydir
 **/.project
-
-
+.vscode/
