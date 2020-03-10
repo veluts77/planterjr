@@ -19,9 +19,14 @@ jrubyJar {
 
     from('src/main/ruby') {
         include 'core/**/*.rb'
+        include 'planter/**/*.rb'
     }
 
     from('../java-obj/build/libs') {
         include 'java-obj.jar'
+    }
+
+    from('../uml-renderer/build/libs') {
+        include 'uml-renderer-all.jar'
     }
 }

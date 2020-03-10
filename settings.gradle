@@ -1,3 +1,5 @@
 rootProject.name = 'planter-jr'
 
+include 'uml-renderer'
+include 'java-obj'
 include 'main'
