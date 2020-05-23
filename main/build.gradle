@@ -19,6 +19,7 @@ jrubyJar {
 
     from('src/main/ruby') {
         include 'core/**/*.rb'
+        include 'ui/**/*rb'
         include 'planter/**/*.rb'
     }
 

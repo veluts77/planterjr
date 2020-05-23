@@ -1,3 +1,4 @@
+#!/usr/bin/env jruby
 # frozen_string_literal: true
 
 puts 'Hello from core Ruby!!!'
@@ -21,8 +22,8 @@ MyApp.new.run
 
 ###
 
-require_relative 'core/swing.rb'
-open_window
+require_relative 'ui/mainframe.rb'
+MainFrame.new
 
 require_relative 'planter/test_renderer.rb'
 require './uml-renderer-all.jar'
