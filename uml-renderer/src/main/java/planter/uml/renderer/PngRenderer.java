@@ -4,7 +4,6 @@ import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -22,20 +21,12 @@ public class PngRenderer extends ARenderer {
 	protected Image createImage() {
 		OutputStream png;
 		try {
-			// png = new FileOutputStream("testdata/image.png");
-			// SourceStringReader reader = new SourceStringReader(_source);
-			// String desc = reader.generateImage(png);
-			// System.out.println(desc);
-			// png.close();
-			
 			png = new ByteArrayOutputStream();
 			SourceStringReader reader = new SourceStringReader(_source);
-			String desc = reader.generateImage(png);
-			System.out.println(desc);
+			reader.generateImage(png);
 			byte[] pngData = ((ByteArrayOutputStream) png).toByteArray();
 			ByteArrayInputStream input = new ByteArrayInputStream(pngData);
 			Image image = ImageIO.read(input);
-			System.out.println("done");
 			return image;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

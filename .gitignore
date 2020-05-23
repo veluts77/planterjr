@@ -32,3 +32,8 @@ build/
 **/.jrubydir
 **/.project
 .vscode/
+
+# Images
+*.jpg
+*.png
+*.svg

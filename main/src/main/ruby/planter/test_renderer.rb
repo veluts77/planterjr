@@ -1,9 +1,13 @@
-class TestRenderer
-    include_package 'planter.uml.renderer'
+# frozen_string_literal: true
 
-    def run
-        renderer = PngRenderer.new('class NiceRuby')
-        image = renderer.getRenderedImage()
-        puts image
-    end
+class TestRenderer
+  include_package 'planter.file'
+  include_package 'planter.uml.renderer'
+
+  def run
+    renderer = PngRenderer.new('class NiceRuby')
+    image = renderer.getRenderedImage
+    saver = ImageSaver.new image
+    saver.save 'generated.png'
+  end
 end

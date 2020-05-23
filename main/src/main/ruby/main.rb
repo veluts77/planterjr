@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 puts 'Hello from core Ruby!!!'
 
 ###
 
 class MyApp
-    require './java-obj.jar'
-    include_package 'objects'
+  require './java-obj.jar'
+  include_package 'objects'
 
-    def run
-        puts 'Working with java object from imported package'
-        obj = JavaObject.new
-        obj.name = '"Ruby rocks"'
-        res = obj.greetingsMessage
-        puts res
-    end
+  def run
+    puts 'Working with java object from imported package'
+    obj = JavaObject.new
+    obj.name = '"Ruby rocks"'
+    res = obj.greetingsMessage
+    puts res
+  end
 end
 
 MyApp.new.run
