@@ -5,15 +5,15 @@ class MainMenu
   require_relative 'filemenu.rb'
   require_relative 'editmenu.rb'
   require_relative 'createmenu.rb'
-  require_relative '../../controls/MenuItem.rb'
+  require_relative '../../controls/menuitem.rb'
 
   import javax.swing.JMenuBar
 
-  def initialize
+  def initialize(event_queue)
     @menu_bar = JMenuBar.new
-    @menu_bar.add FileMenu.new.swing
-    @menu_bar.add EditMenu.new.swing
-    @menu_bar.add CreateMenu.new.swing
+    @menu_bar.add FileMenu.new(event_queue).swing
+    @menu_bar.add EditMenu.new(event_queue).swing
+    @menu_bar.add CreateMenu.new(event_queue).swing
   end
 
   def swing

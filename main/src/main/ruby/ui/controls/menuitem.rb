@@ -4,10 +4,10 @@
 class MenuItem
   import javax.swing.JMenuItem
 
-  def initialize(label, tooltip, key_event)
-    @item = JMenuItem.new label
-    @item.setMnemonic key_event
-    @item.setToolTipText tooltip
+  def initialize(hash, event_queue)
+    @item = JMenuItem.new hash[:label]
+    @item.setMnemonic hash[:mnemonic]
+    @item.setToolTipText hash[:tip]
   end
 
   def action(&block)

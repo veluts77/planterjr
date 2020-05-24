@@ -6,12 +6,18 @@ class CreateMenu
   import java.awt.event.KeyEvent
   import java.lang.System
 
-  def initialize
+  @@items = [
+    { label: 'Class', tip: 'Create class', mnemonic: KeyEvent::VK_C, action: 'create class' },
+    { label: 'Interface', tip: 'Create interface', mnemonic: KeyEvent::VK_I, action: 'create interface' }
+  ]
+
+  def initialize(event_queue)
     @menu = JMenu.new 'Create'
     @menu.setMnemonic KeyEvent::VK_C
 
-    @menu.add(MenuItem.new('Class', 'Create class', KeyEvent::VK_C).swing)
-    @menu.add(MenuItem.new('Interface', 'Create interface', KeyEvent::VK_I).swing)
+    @@items.each do |hash|
+      @menu.add MenuItem.new(hash, event_queue).swing
+    end
   end
 
   def swing

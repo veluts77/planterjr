@@ -6,15 +6,20 @@ class FileMenu
   import java.awt.event.KeyEvent
   import java.lang.System
 
-  def initialize
+  @@items = [
+    { label: 'New', tip: 'New file', mnemonic: KeyEvent::VK_N, action: 'new file' },
+    { label: 'Open...', tip: 'Open file', mnemonic: KeyEvent::VK_O, action: 'open file' },
+    { label: 'Save', tip: 'Save file', mnemonic: KeyEvent::VK_S, action: 'save file' },
+    { label: 'Exit', tip: 'Exit application', mnemonic: KeyEvent::VK_X, action: 'exit application' }
+  ]
+
+  def initialize(event_queue)
     @menu = JMenu.new 'File'
     @menu.setMnemonic KeyEvent::VK_F
 
-    item = MenuItem.new 'Exit', 'Exit application', KeyEvent::VK_X
-    item.action { System.exit 0 }
-    @menu.add(MenuItem.new('Open...', 'Open file', KeyEvent::VK_O).swing)
-    @menu.add(MenuItem.new('Save', 'Save file', KeyEvent::VK_S).swing)
-    @menu.add item.swing
+    @@items.each do |hash|
+      @menu.add MenuItem.new(hash, event_queue).swing
+    end
   end
 
   def swing

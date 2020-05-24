@@ -6,12 +6,18 @@ class EditMenu
   import java.awt.event.KeyEvent
   import java.lang.System
 
-  def initialize
+  @@items = [
+    { label: 'Search...', tip: 'Search', mnemonic: KeyEvent::VK_S, action: 'search in text' },
+    { label: 'Replace...', tip: 'Replace', mnemonic: KeyEvent::VK_R, action: 'replace in text' }
+  ]
+
+  def initialize(event_queue)
     @menu = JMenu.new 'Edit'
     @menu.setMnemonic KeyEvent::VK_E
 
-    @menu.add(MenuItem.new('Search...', 'Search', KeyEvent::VK_S).swing)
-    @menu.add(MenuItem.new('Replace...', 'Replace', KeyEvent::VK_R).swing)
+    @@items.each do |hash|
+      @menu.add MenuItem.new(hash, event_queue).swing
+    end
   end
 
   def swing
