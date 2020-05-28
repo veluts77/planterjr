@@ -4,6 +4,8 @@
 class MainFrame < javax.swing.JFrame
   require_relative 'menu/main/mainmenu.rb'
   require_relative 'toolbar/classbar.rb'
+  require_relative 'panels/editor/editorpanel.rb'
+  require_relative 'panels/renderer/rendererpanel.rb'
 
   import java.awt.BorderLayout
   import javax.swing.JFrame
@@ -12,7 +14,7 @@ class MainFrame < javax.swing.JFrame
     super 'Planter Jr'
 
     init_menu
-    init_toolbar
+    init_components
     init_window_and_position
   end
 
@@ -22,8 +24,10 @@ class MainFrame < javax.swing.JFrame
     setJMenuBar MainMenu.new(nil).swing
   end
 
-  def init_toolbar
+  def init_components
+    add EditorPanel.new(nil).swing, BorderLayout::CENTER
     add ClassBar.new(nil).swing, BorderLayout::NORTH
+    add RendererPanel.new(nil).swing, BorderLayout::EAST
   end
 
   def init_window_and_position
