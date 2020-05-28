@@ -13,7 +13,7 @@ class EditMenu
 
   def initialize(event_queue)
     @menu = JMenu.new 'Edit'
-    @menu.setMnemonic KeyEvent::VK_E
+    @menu.java_send :setMnemonic, [Java::char], KeyEvent::VK_E
 
     @@items.each do |hash|
       @menu.add MenuItem.new(hash, event_queue).swing

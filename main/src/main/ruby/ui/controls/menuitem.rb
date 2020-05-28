@@ -6,7 +6,7 @@ class MenuItem
 
   def initialize(hash, event_queue)
     @item = JMenuItem.new hash[:label]
-    @item.setMnemonic hash[:mnemonic]
+    @item.java_send :setMnemonic, [Java::char], hash[:mnemonic]
     @item.setToolTipText hash[:tip]
   end
 

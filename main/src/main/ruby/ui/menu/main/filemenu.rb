@@ -15,7 +15,7 @@ class FileMenu
 
   def initialize(event_queue)
     @menu = JMenu.new 'File'
-    @menu.setMnemonic KeyEvent::VK_F
+    @menu.java_send :setMnemonic, [Java::char], KeyEvent::VK_F
 
     @@items.each do |hash|
       @menu.add MenuItem.new(hash, event_queue).swing

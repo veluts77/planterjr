@@ -13,7 +13,7 @@ class CreateMenu
 
   def initialize(event_queue)
     @menu = JMenu.new 'Create'
-    @menu.setMnemonic KeyEvent::VK_C
+    @menu.java_send :setMnemonic, [Java::char], KeyEvent::VK_C
 
     @@items.each do |hash|
       @menu.add MenuItem.new(hash, event_queue).swing
