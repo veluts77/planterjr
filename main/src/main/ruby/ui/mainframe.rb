@@ -10,9 +10,10 @@ class MainFrame < javax.swing.JFrame
   import java.awt.BorderLayout
   import javax.swing.JFrame
 
-  def initialize
+  def initialize(event_queue)
     super 'Planter Jr'
 
+    @event_queue = event_queue
     init_menu
     init_components
     init_window_and_position
@@ -21,13 +22,13 @@ class MainFrame < javax.swing.JFrame
   private
 
   def init_menu
-    setJMenuBar MainMenu.new(nil).swing
+    setJMenuBar MainMenu.new(@event_queue).swing
   end
 
   def init_components
-    add EditorPanel.new(nil).swing, BorderLayout::CENTER
-    add ClassBar.new(nil).swing, BorderLayout::NORTH
-    add RendererPanel.new(nil).swing, BorderLayout::EAST
+    add EditorPanel.new(@event_queue).swing, BorderLayout::CENTER
+    add ClassBar.new(@event_queue).swing, BorderLayout::NORTH
+    add RendererPanel.new(@event_queue).swing, BorderLayout::EAST
   end
 
   def init_window_and_position

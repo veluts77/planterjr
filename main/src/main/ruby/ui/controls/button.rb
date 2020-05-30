@@ -7,6 +7,7 @@ class ActionButton
   def initialize(hash, event_queue)
     @button = JButton.new hash[:label]
     @button.setToolTipText hash[:tip]
+    @button.addActionListener { |_e| event_queue.push hash[:action] }
   end
 
   def swing

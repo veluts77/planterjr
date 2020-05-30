@@ -8,11 +8,7 @@ class MenuItem
     @item = JMenuItem.new hash[:label]
     @item.java_send :setMnemonic, [Java::char], hash[:mnemonic]
     @item.setToolTipText hash[:tip]
-  end
-
-  def action(&block)
-    @item.addActionListener block
-    self
+    @item.addActionListener { |_e| event_queue.push hash[:action] }
   end
 
   def swing
