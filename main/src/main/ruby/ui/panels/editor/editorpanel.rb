@@ -16,7 +16,7 @@ class EditorPanel
 
   def init_editor(event_queue)
     @editor = JEditorPane.new
-    @editor.addKeyListener EditorPanel::KeyListener.new event_queue
+    @editor.addKeyListener EditorPanel::KeyListener.new event_queue, @editor
     @editor.addCaretListener EditorPanel::CaretListener.new event_queue
   end
 
@@ -26,20 +26,28 @@ class EditorPanel
 
   # Key processing for editor
   class KeyListener
-    def initialize(event_queue)
+    def initialize(event_queue, editor)
       @event_queue = event_queue
+      @editor = editor
+      @prev_text = ''
     end
 
-    def key_pressed(event); end
-
-    def key_released(event); end
-
-    def key_typed(event)
+    def key_pressed(event)
       alt_modifier = 8
       return if event.modifiers == alt_modifier
 
       @event_queue.push :pe_key_typed, event
     end
+
+    def key_released(_event)
+      new_text = @editor.getText
+      return if @prev_text == new_text
+
+      @prev_text = new_text
+      @event_queue.push :pe_text_changed, new_text
+    end
+
+    def key_typed(event); end
   end
 
   # Caret precessing for editor

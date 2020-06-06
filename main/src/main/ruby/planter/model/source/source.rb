@@ -1,12 +1,13 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 # Source representation
 class PlantSource < PlanterModel
   def initialize
-    reset
+    super
+    reset!
   end
 
-  def reset
+  def reset!
     # PlantUML text contents
     @source = ''
     # real position of the caret
@@ -17,19 +18,38 @@ class PlantSource < PlanterModel
     notify_changed
   end
 
-  def append(text)
-    @source += text
+  def source!(value)
+    @source = value
     notify_changed
   end
 
-  def new_line
+  def append_char!(char)
+    if char == 8
+      @source.chop!
+    else
+      @source << char
+    end
+    notify_changed
+  end
+
+  def new_line!
     @source += "\n"
+    notify_changed
+  end
+
+  def dot!(value)
+    @dot = value
+    notify_changed
+  end
+
+  def mark!(value)
+    @mark = value
     notify_changed
   end
 
   private
 
   def notify_changed
-    notify_observers self, { source: @source, dot: @dot, mark: @mark }
+    notify_observers({ source: @source, dot: @dot, mark: @mark })
   end
 end

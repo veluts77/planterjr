@@ -7,6 +7,6 @@ class EditorKeyTyped
   end
 
   def execute
-    puts @data
+    # TODO
   end
 end

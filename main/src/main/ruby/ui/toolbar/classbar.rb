@@ -6,8 +6,8 @@ class ClassBar
   import javax.swing.JToolBar
 
   @@buttons = [
-    { label: 'Class', tip: 'Creates Class', action: 'create class' },
-    { label: 'Interface', tip: 'Creates Interface', action: 'create interface' }
+    { label: 'Class', tip: 'Creates Class', action: :pe_create_class },
+    { label: 'Interface', tip: 'Creates Interface', action: :pe_create_interface }
   ]
 
   def initialize(event_queue)

@@ -23,8 +23,6 @@ class Accelerator
   end
 
   def self.stroke_for(char, modifier)
-    puts char.ord
-    puts modifier
     KeyStroke.getKeyStroke char.ord, modifier
   end
 end

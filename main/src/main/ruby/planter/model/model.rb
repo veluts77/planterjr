@@ -2,16 +2,18 @@
 
 # Base model with notify observers capability
 class PlanterModel
+  require 'set'
+
   def initialize
     @observers = Set.new
   end
 
   def add_observer(observer)
-    if observer.method_defined? :update
-      abort 'Invalid observer: no update() method'
-    else
-      @observers.add observer
+    unless observer.methods.include? :update
+      raise 'Invalid observer: no update() method'
     end
+
+    @observers.add observer
   end
 
   def remove_observer(observer)
@@ -23,6 +25,6 @@ class PlanterModel
   end
 
   def notify_observers(data)
-    @observers.each { |o| @observers.update({ sender: o, data: data }) }
+    @observers.each { |o| o.update({ sender: self, data: data }) }
   end
 end
