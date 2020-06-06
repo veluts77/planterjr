@@ -9,7 +9,7 @@ class CommandsFactory
 
   @@commands = [
     # file action commands (menu, buttons, etc)
-    { name: 'new file', cls: CreateNewFile },
+    { name: :pe_new_file, cls: CreateNewFile },
 
     # main editor commands
     { name: :pe_key_typed, cls: EditorKeyTyped },

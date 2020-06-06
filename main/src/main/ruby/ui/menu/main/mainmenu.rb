@@ -2,10 +2,11 @@
 
 # Main menu
 class MainMenu
+  require_relative '../../controls/menuitem.rb'
+  require_relative '../../controls/accelerator.rb'
   require_relative 'filemenu.rb'
   require_relative 'editmenu.rb'
   require_relative 'createmenu.rb'
-  require_relative '../../controls/menuitem.rb'
 
   import javax.swing.JMenuBar
 

@@ -7,8 +7,10 @@ class EditMenu
   import java.lang.System
 
   @@items = [
-    { label: 'Search...', tip: 'Search', mnemonic: KeyEvent::VK_S, action: 'search in text' },
-    { label: 'Replace...', tip: 'Replace', mnemonic: KeyEvent::VK_R, action: 'replace in text' }
+    { label: 'Search...', tip: 'Search', mnemonic: KeyEvent::VK_S,
+      action: :pe_search_text },
+    { label: 'Replace...', tip: 'Replace', mnemonic: KeyEvent::VK_R,
+      action: :pe_replace_text }
   ]
 
   def initialize(event_queue)

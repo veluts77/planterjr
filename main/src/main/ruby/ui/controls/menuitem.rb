@@ -8,6 +8,7 @@ class MenuItem
     @item = JMenuItem.new hash[:label]
     @item.java_send :setMnemonic, [Java::char], hash[:mnemonic]
     @item.setToolTipText hash[:tip]
+    @item.setAccelerator(hash[:accelerator]) unless hash[:accelerator].nil?
     @item.addActionListener { |_e| event_queue.push hash[:action] }
   end
 

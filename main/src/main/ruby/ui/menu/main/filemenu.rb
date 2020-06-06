@@ -3,14 +3,20 @@
 # File menu
 class FileMenu
   import javax.swing.JMenu
+  import javax.swing.KeyStroke
   import java.awt.event.KeyEvent
+  import java.awt.event.InputEvent
   import java.lang.System
 
   @@items = [
-    { label: 'New', tip: 'New file', mnemonic: KeyEvent::VK_N, action: 'new file' },
-    { label: 'Open...', tip: 'Open file', mnemonic: KeyEvent::VK_O, action: 'open file' },
-    { label: 'Save', tip: 'Save file', mnemonic: KeyEvent::VK_S, action: 'save file' },
-    { label: 'Exit', tip: 'Exit application', mnemonic: KeyEvent::VK_X, action: 'exit application' }
+    { label: 'New', tip: 'New file', mnemonic: KeyEvent::VK_N,
+      action: :pe_new_file },
+    { label: 'Open...', tip: 'Open file', mnemonic: KeyEvent::VK_O,
+      action: :pe_open_file, accelerator: Accelerator.ctrl('O') },
+    { label: 'Save', tip: 'Save file', mnemonic: KeyEvent::VK_S,
+      action: :pe_save_file, accelerator: Accelerator.ctrl('S') },
+    { label: 'Exit', tip: 'Exit application', mnemonic: KeyEvent::VK_X,
+      action: :pe_exit_app }
   ]
 
   def initialize(event_queue)

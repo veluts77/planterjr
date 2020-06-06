@@ -7,8 +7,10 @@ class CreateMenu
   import java.lang.System
 
   @@items = [
-    { label: 'Class', tip: 'Create class', mnemonic: KeyEvent::VK_C, action: 'create class' },
-    { label: 'Interface', tip: 'Create interface', mnemonic: KeyEvent::VK_I, action: 'create interface' }
+    { label: 'Class', tip: 'Create class', mnemonic: KeyEvent::VK_C,
+      action: :pe_create_class },
+    { label: 'Interface', tip: 'Create interface', mnemonic: KeyEvent::VK_I,
+      action: :pe_create_interface }
   ]
 
   def initialize(event_queue)
