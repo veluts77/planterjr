@@ -3,6 +3,7 @@
 # Editor panel
 class EditorPanel
   import javax.swing.JPanel
+  import javax.swing.JScrollPane
   import javax.swing.JLabel
   import javax.swing.JEditorPane
   import java.awt.BorderLayout
@@ -12,6 +13,8 @@ class EditorPanel
     @panel = JPanel.new
     @panel.setLayout BorderLayout.new 10, 10
     @panel.add @editor, BorderLayout::CENTER
+
+    @scroll_pane = JScrollPane.new @panel
   end
 
   def init_editor(event_queue)
@@ -21,7 +24,7 @@ class EditorPanel
   end
 
   def swing
-    @panel
+    @scroll_pane
   end
 
   # Key processing for editor
