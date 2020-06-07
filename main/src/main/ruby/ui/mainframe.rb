@@ -33,7 +33,7 @@ class MainFrame < javax.swing.JFrame
 
   def init_window_and_position
     setDefaultCloseOperation JFrame::EXIT_ON_CLOSE
-    setSize 1200, 800
+    setSize 1200, 850
     setLocationRelativeTo nil
     setVisible true
   end

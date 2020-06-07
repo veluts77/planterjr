@@ -2,45 +2,40 @@
 
 # Renderer Panel
 class RendererPanel
+  require_relative 'debug.rb'
+  require_relative 'renderer.rb'
+  require_relative 'controls.rb'
+
   import javax.swing.JPanel
-  import javax.swing.JLabel
   import java.awt.Dimension
-  import javax.swing.JEditorPane
-  import java.awt.BorderLayout
 
   def initialize(event_queue)
+    @event_queue = event_queue
+
     @panel = JPanel.new
-    @panel.setPreferredSize Dimension.new 600, 600
+    @panel.setPreferredSize Dimension.new 610, 610
+
+    init_controls
+    init_renderer
     init_debug
-    PlanterFacade.source.add_observer self
+  end
+
+  def init_controls
+    @controls = RendererControls.new @event_queue
+    @panel.add @controls.swing
+  end
+
+  def init_renderer
+    @renderer = PlanterRenderer.new @event_queue
+    @panel.add @renderer.swing
+  end
+
+  def init_debug
+    @debug = DebugInfo.new @event_queue
+    @panel.add @debug.swing
   end
 
   def swing
     @panel
-  end
-
-  def update(hash)
-    update_debug hash
-  end
-
-  private
-
-  def init_debug
-    @mirror = JEditorPane.new
-    @mirror.setPreferredSize Dimension.new 550, 200
-    @panel.add @mirror
-
-    @label = JLabel.new 'yet empty'
-    @panel.add @label
-  end
-
-  def update_debug(hash)
-    data = hash[:data]
-    source = data[:source]
-    dot = data[:dot]
-    mark = data[:mark]
-    @label.setText "dot = #{dot}, mark = #{mark}"
-    @mirror.setEditable false
-    @mirror.setText source
   end
 end
