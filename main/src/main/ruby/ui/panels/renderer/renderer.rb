@@ -3,6 +3,7 @@
 # Render area with scrolling support
 class PlanterRenderer
   include_package 'planter.uml.renderer'
+  require_relative 'rendererproxy.rb'
 
   import javax.swing.JPanel
   import javax.swing.JLabel
@@ -17,7 +18,8 @@ class PlanterRenderer
     @scroll_pane = JScrollPane.new @panel
     @scroll_pane.setPreferredSize Dimension.new 600, 500
 
-    PlanterFacade.source.add_observer self
+    @event_proxy = RendererProxy.new
+    @event_proxy.add_observer self
   end
 
   def swing
