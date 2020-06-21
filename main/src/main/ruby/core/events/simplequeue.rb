@@ -18,4 +18,6 @@ class SimpleEventQueue
   end
 
   def pop; end
+
+  def destroy; end
 end
