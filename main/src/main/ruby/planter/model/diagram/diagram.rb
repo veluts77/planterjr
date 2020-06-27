@@ -7,6 +7,10 @@ class PlantDiagram < PlanterModel
   end
 
   def refresh
-    notify_observers({ command: :cmd_refresh})
+    notify_observers({ command: :cmd_refresh })
+  end
+
+  def copy_to_clipboard
+    notify_observers({ command: :cmd_copy })
   end
 end
