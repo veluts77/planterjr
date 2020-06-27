@@ -7,6 +7,7 @@ class MainMenu
   require_relative 'filemenu.rb'
   require_relative 'editmenu.rb'
   require_relative 'createmenu.rb'
+  require_relative 'diagrammenu.rb'
 
   import javax.swing.JMenuBar
 
@@ -15,6 +16,7 @@ class MainMenu
     @menu_bar.add FileMenu.new(event_queue).swing
     @menu_bar.add EditMenu.new(event_queue).swing
     @menu_bar.add CreateMenu.new(event_queue).swing
+    @menu_bar.add DiagramMenu.new(event_queue).swing
   end
 
   def swing
