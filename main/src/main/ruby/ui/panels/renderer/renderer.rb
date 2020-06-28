@@ -4,6 +4,7 @@
 class PlanterRenderer
   include_package 'planter.uml.renderer'
   include_package 'planter.clipboard'
+  include_package 'planter.file'
   require_relative 'rendererproxy.rb'
 
   import javax.swing.JPanel
@@ -11,7 +12,6 @@ class PlanterRenderer
   import javax.swing.JScrollPane
   import javax.swing.ImageIcon
   import java.awt.Dimension
-  import java.awt.datatransfer.*
 
   def initialize(_event_queue)
     @image_label = JLabel.new
@@ -42,7 +42,7 @@ class PlanterRenderer
 
   def update_from_proxy(data)
     source = data[:source]
-    renderer = PngRenderer.new(source)
+    renderer = PngRenderer.new source
     @rendered_image = renderer.getRenderedImage
     icon = ImageIcon.new @rendered_image
     @image_label.set_icon icon
@@ -51,11 +51,20 @@ class PlanterRenderer
   def update_from_diagram_facade(data)
     return if @rendered_image.nil?
 
-    copy_to_clipboard if data[:command] == :cmd_copy
+    if data[:command] == :cmd_copy
+      copy_to_clipboard
+    elsif data[:command] == :cmd_save
+      save_to_file data[:filename]
+    end
   end
 
   def copy_to_clipboard
     clipboard = PlanterClipboard.new
     clipboard.copyImage @rendered_image
+  end
+
+  def save_to_file(full_filename)
+    saver = ImageSaver.new @rendered_image
+    saver.save full_filename
   end
 end

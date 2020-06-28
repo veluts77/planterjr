@@ -9,6 +9,7 @@ class CommandsFactory
   require_relative 'editor/editortextchanged.rb'
   require_relative 'diagram/refreshdiagram.rb'
   require_relative 'diagram/copydiagram.rb'
+  require_relative 'diagram/savediagram.rb'
 
   @@commands = [
     # file action commands (menu, buttons, etc)
@@ -21,7 +22,8 @@ class CommandsFactory
 
     # diagram related commands
     { name: :pe_refresh_diagram, cls: RefreshDiagram },
-    { name: :pe_copy_diagram, cls: CopyDiagramToClipboard }
+    { name: :pe_copy_diagram, cls: CopyDiagramToClipboard },
+    { name: :pe_save_diagram, cls: SaveDiagram }
   ]
 
   def create(event)

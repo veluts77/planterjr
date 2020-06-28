@@ -13,4 +13,8 @@ class PlantDiagram < PlanterModel
   def copy_to_clipboard
     notify_observers({ command: :cmd_copy })
   end
+
+  def save(full_filename)
+    notify_observers({ command: :cmd_save, filename: full_filename })
+  end
 end

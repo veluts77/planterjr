@@ -6,7 +6,5 @@ require_relative 'ui/mainframe.rb'
 require_relative 'core/events/parallelqueue.rb'
 MainFrame.new ParallelEventQueue.new
 
-require_relative 'planter/test_renderer.rb'
-require './uml-renderer-all.jar'
-require './java-obj.jar'
-TestRenderer.new.run
+require_relative 'uml-renderer-all.jar'
+require_relative 'java-obj.jar'
