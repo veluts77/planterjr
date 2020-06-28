@@ -2,23 +2,29 @@
 
 # Editor panel
 class EditorPanel
+  include_package 'planter.editor'
+
   import javax.swing.JPanel
   import javax.swing.JScrollPane
   import javax.swing.JLabel
   import javax.swing.JEditorPane
   import java.awt.BorderLayout
+  import java.awt.Font
 
   def initialize(event_queue)
     init_editor event_queue
     @panel = JPanel.new
     @panel.setLayout BorderLayout.new 10, 10
-    @panel.add @editor, BorderLayout::CENTER
+    @panel.add @editor.swing, BorderLayout::CENTER
 
     @scroll_pane = JScrollPane.new @panel
   end
 
   def init_editor(event_queue)
-    @editor = JEditorPane.new
+    @editor = PlanterEditor.new
+    @editor.setFont Font.new('Ubuntu Mono', Font::PLAIN, 20)
+    @editor.tabSize = 2
+
     @editor.addKeyListener EditorPanel::KeyListener.new event_queue, @editor
     @editor.addCaretListener EditorPanel::CaretListener.new event_queue
   end
@@ -31,7 +37,7 @@ class EditorPanel
   class KeyListener
     def initialize(event_queue, editor)
       @event_queue = event_queue
-      @editor = editor
+      @editor = editor.swing
       @prev_text = ''
     end
 
