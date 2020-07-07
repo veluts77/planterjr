@@ -22,7 +22,7 @@ class EditorPanel
 
   def init_editor(event_queue)
     @editor = PlanterEditor.new
-    @editor.setFont Font.new('Ubuntu Mono', Font::PLAIN, 20)
+    @editor.setFont Font.new('monospaced', Font::PLAIN, 16)
     @editor.tabSize = 2
 
     @editor.addKeyListener EditorPanel::KeyListener.new event_queue, @editor
