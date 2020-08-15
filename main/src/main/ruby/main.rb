@@ -1,21 +1,18 @@
 #!/usr/bin/env jruby
 # frozen_string_literal: true
 
-require_relative 'planter/facade.rb'
-require_relative 'ui/mainframe.rb'
-require_relative 'core/events/parallelqueue.rb'
+require './planter/facade.rb'
+require './ui/mainframe.rb'
+require './core/events/parallelqueue.rb'
 
-require_relative 'uml-renderer-all.jar'
-require_relative 'java-obj.jar'
+require './uml-renderer-all.jar'
+require './java-obj-all.jar'
 
-java_import javax.swing.UIManager
-java_import javax.swing.plaf.nimbus.NimbusLookAndFeel
-java_import java.awt.Font
-def setup_look_and_feel
-  laf = NimbusLookAndFeel.new
-  UIManager.set_look_and_feel laf
-  laf.getDefaults.put('defaultFont', Font.new('Arial', Font::BOLD, 14))
+java_import com.formdev.flatlaf.FlatLightLaf
+
+def setup_flat_laf
+  FlatLightLaf.install
 end
 
-setup_look_and_feel
+setup_flat_laf
 MainFrame.new ParallelEventQueue.new

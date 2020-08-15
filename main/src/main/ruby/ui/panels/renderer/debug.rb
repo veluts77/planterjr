@@ -9,10 +9,10 @@ class DebugInfo
 
   def initialize(_event_queue)
     @panel = JPanel.new
-    @panel.setPreferredSize Dimension.new 550, 200
+    @panel.setPreferredSize Dimension.new 550, 190
 
     @mirror = JEditorPane.new
-    @mirror.setPreferredSize Dimension.new 550, 170
+    @mirror.setPreferredSize Dimension.new 550, 160
     @panel.add @mirror
 
     @label = JLabel.new 'yet empty'
