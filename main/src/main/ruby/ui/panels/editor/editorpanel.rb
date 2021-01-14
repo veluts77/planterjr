@@ -13,15 +13,11 @@ class EditorPanel
 
   def initialize(event_queue)
     init_editor event_queue
-    @panel = JPanel.new
-    @panel.setLayout BorderLayout.new 10, 10
-    @panel.add @editor.swing, BorderLayout::CENTER
-
-    @scroll_pane = JScrollPane.new @panel
+    init_scroll_pane
   end
 
   def init_editor(event_queue)
-    @editor = PlanterEditor.new
+    @editor = RSyntaxPlanterEditor.new
     @editor.setFont Font.new('monospaced', Font::PLAIN, 16)
     @editor.tabSize = 2
 
@@ -29,8 +25,12 @@ class EditorPanel
     @editor.addCaretListener EditorPanel::CaretListener.new event_queue
   end
 
+  def init_scroll_pane
+    @scroll_pane = PlanterScrollPane.new @editor
+  end
+
   def swing
-    @scroll_pane
+    @scroll_pane.swing
   end
 
   # Key processing for editor
