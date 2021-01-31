@@ -4,6 +4,7 @@
 class CommandsFactory
   require_relative 'defaultcommand.rb'
   require_relative 'file/createnewfile.rb'
+  require_relative 'file/exitapplication.rb'
   require_relative 'editor/editorkeytyped.rb'
   require_relative 'editor/editorcaretchanged.rb'
   require_relative 'editor/editortextchanged.rb'
@@ -14,6 +15,7 @@ class CommandsFactory
   @@commands = [
     # file action commands (menu, buttons, etc)
     { name: :pe_new_file, cls: CreateNewFile },
+    { name: :pe_exit_app, cls: ExitApplication },
 
     # main editor commands
     { name: :pe_key_typed, cls: EditorKeyTyped },
