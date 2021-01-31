@@ -1,14 +1,7 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.4'
-    }
+plugins {
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
+    id 'java'
 }
-
-apply plugin: 'com.github.johnrengelman.shadow'
-apply plugin: 'java'
 
 sourceCompatibility = '1.8'
 

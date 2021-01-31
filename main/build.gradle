@@ -1,17 +1,5 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.github.jruby-gradle:jruby-gradle-jar-plugin:2.0.0'
-    }
-}
-
-apply plugin: "com.github.jruby-gradle.jar"
-
-dependencies {
-    // jrubyJar "rubygems:colorize:0.7.7+"
+plugins {
+   id 'com.github.jruby-gradle.jar' version '2.0.0'
 }
 
 jrubyJar {
