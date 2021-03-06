@@ -1,5 +1,5 @@
 plugins {
-   id 'com.github.jruby-gradle.jar' version '2.0.0'
+   id 'com.github.jruby-gradle.jar' version '2.0.2'
 }
 
 jrubyJar {
@@ -12,10 +12,10 @@ jrubyJar {
     }
 
     from('../java-obj/build/libs') {
-        include 'java-obj-all.jar'
+        include '*.jar'
     }
 
     from('../uml-renderer/build/libs') {
-        include 'uml-renderer-all.jar'
+        include '*.jar'
     }
 }

@@ -5,8 +5,8 @@ require './planter/facade.rb'
 require './ui/mainframe.rb'
 require './core/events/parallelqueue.rb'
 
-require './uml-renderer-all.jar'
-require './java-obj-all.jar'
+require './uml-renderer.jar'
+require './java-obj.jar'
 
 java_import com.formdev.flatlaf.FlatLightLaf
 
