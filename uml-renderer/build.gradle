@@ -6,7 +6,7 @@ plugins {
 sourceCompatibility = '1.8'
 
 dependencies {
-    implementation 'net.sourceforge.plantuml:plantuml:8059'
+    implementation 'net.sourceforge.plantuml:plantuml:1.2021.14'
 }
 
 build.finalizedBy shadowJar
