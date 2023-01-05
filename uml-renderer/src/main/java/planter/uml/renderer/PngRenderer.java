@@ -23,7 +23,7 @@ public class PngRenderer extends ARenderer {
 		try {
 			png = new ByteArrayOutputStream();
 			SourceStringReader reader = new SourceStringReader(_source);
-			reader.generateImage(png);
+			reader.outputImage(png);
 			byte[] pngData = ((ByteArrayOutputStream) png).toByteArray();
 			ByteArrayInputStream input = new ByteArrayInputStream(pngData);
 			Image image = ImageIO.read(input);
