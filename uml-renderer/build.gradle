@@ -3,7 +3,7 @@ plugins {
     id 'java'
 }
 
-sourceCompatibility = '1.8'
+sourceCompatibility = '11'
 
 dependencies {
     implementation 'net.sourceforge.plantuml:plantuml:1.2021.14'

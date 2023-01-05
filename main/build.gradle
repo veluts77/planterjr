@@ -2,6 +2,8 @@ plugins {
    id 'com.github.jruby-gradle.jar' version '2.0.2'
 }
 
+sourceCompatibility = '11'
+
 jrubyJar {
     initScript "${projectDir}/src/main/ruby/main.rb"
 
