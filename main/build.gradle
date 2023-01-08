@@ -21,3 +21,11 @@ jrubyJar {
         include '*.jar'
     }
 }
+
+tasks.register('mainClean', Delete) {
+    delete fileTree("src").matching {
+        include "**/*.jar"
+    }
+}
+
+clean.finalizedBy mainClean

@@ -3,7 +3,8 @@
 
 require './planter/facade.rb'
 require './ui/mainframe.rb'
-require './core/events/parallelqueue.rb'
+# require './core/events/parallelqueue.rb'
+require './core/events/simplequeue.rb'
 
 require './uml-renderer-all.jar'
 require './java-obj-all.jar'
@@ -15,4 +16,5 @@ def setup_flat_laf
 end
 
 setup_flat_laf
-MainFrame.new ParallelEventQueue.new
+# MainFrame.new ParallelEventQueue.new
+MainFrame.new SimpleEventQueue.new

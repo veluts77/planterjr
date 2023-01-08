@@ -9,4 +9,13 @@ dependencies {
     implementation 'net.sourceforge.plantuml:plantuml:1.2021.14'
 }
 
+tasks.register('copyUmlRenderer', Copy) {
+    from layout.buildDirectory.file("libs/uml-renderer-all.jar")
+    into layout.buildDirectory.dir("../../main/src/main/ruby")
+}
+
+build.finalizedBy shadowJar
+
+shadowJar.finalizedBy copyUmlRenderer
+
 build.finalizedBy shadowJar
