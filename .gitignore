@@ -37,3 +37,6 @@ build/
 *.jpg
 *.png
 *.svg
+
+.env
+.DS_Store
